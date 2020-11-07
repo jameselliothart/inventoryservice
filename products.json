@@ -1,0 +1,29 @@
+[
+    {
+        "ProductID": 1,
+        "Manufacturer": "Johns-Jenkins",
+        "Sku": "p5z",
+        "Upc": "1234",
+        "PricePerUnit": "459.34",
+        "QuantityOnHand": 9703,
+        "ProductName": "foo"
+    },
+    {
+        "ProductID": 2,
+        "Manufacturer": "H, S, and F",
+        "Sku": "i7v",
+        "Upc": "74097",
+        "PricePerUnit": "282.29",
+        "QuantityOnHand": 9217,
+        "ProductName": "leg warmers"
+    },
+    {
+        "ProductID": 3,
+        "Manufacturer": "S, B and B",
+        "Sku": "q0L",
+        "Upc": "11173",
+        "PricePerUnit": "436.34",
+        "QuantityOnHand": 5905,
+        "ProductName": "lamp shade"
+    }
+]
