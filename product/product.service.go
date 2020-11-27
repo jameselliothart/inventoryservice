@@ -74,14 +74,18 @@ func productHandler(w http.ResponseWriter, r *http.Request) {
 func productsHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
-		productList := getProductList()
-		productsJson, err := json.Marshal(productList)
+		productList, err := getProductList()
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		productsJSON, err := json.Marshal(productList)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(productsJson)
+		w.Write(productsJSON)
 	case http.MethodPost:
 		var newProduct Product
 		bodyBytes, err := ioutil.ReadAll(r.Body)
