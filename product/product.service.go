@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -62,7 +63,12 @@ func productHandler(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
-		addOrUpdateProduct(updatedProduct)
+		err = updateProduct(updatedProduct)
+		if err != nil {
+			log.Print(err)
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
 		w.WriteHeader(http.StatusOK)
 		return
 	case http.MethodDelete:
@@ -106,7 +112,7 @@ func productsHandler(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
-		_, err = addOrUpdateProduct(newProduct)
+		_, err = insertProduct(newProduct)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
