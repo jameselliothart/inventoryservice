@@ -7,3 +7,10 @@
 ## Notes
 
 `_ "github.com/go-sql-driver/mysql"` imports just for side effects (working with MySQL) - no functions are actually used.
+
+Test websocket via browser console:
+
+```js
+let ws = new WebSocket("ws://localhost:5000/websocket")
+ws.send(JSON.stringify({data: "test message", type: "test"}))
+```
